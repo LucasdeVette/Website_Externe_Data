@@ -1,5 +1,93 @@
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+}
+
 .darkmodestyle {
     background-color: black;
     color: white;
 }
+.darkmodeicon {
+    background-color: rgb(90, 77, 77);
+    border-radius: 40%;
+}
 
+.profilebuttoncss button{
+    
+    background-color: rgb(90, 77, 77);
+    border-radius: 40%;
+    height: 2rem;
+    width: 2rem;
+}
+.profilebuttoncss img {
+    height: 100%;
+    width: 150%;
+    border-radius: 40%;
+    
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.profile {
+position: relative;
+display: inline-block;
+}
+
+#profilebutton {
+border: none;
+background: none;
+cursor: pointer;
+}
+
+#profilebutton img{
+width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.dropdownmenucss {
+    display: none;
+    position: absolute;
+    top: 60px;
+    width: 300px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    right: 10px;
+    
+}
+
+.dropdownmenucss.show {
+display: block;
+}
+
+.profileheader {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
+.profileheader img {
+width: 45px;
+height: 45px;
+border-radius: 50%;
+}
+
+.dropdownmenucss p {
+padding: 12px;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.dropdownmenucss p:hover {
+ background-color: #eeeeee;
+border-radius: 8px;
+}

@@ -18,10 +18,27 @@ if (wachtwoord === "hallo123") {
 }
 
 let darkmode = document.getElementById("darkmode");
+let darkmodeicon = document.getElementById("darkmodeicon");
+let profilebutton = document.getElementById("profilebutton");
+let dropdownmenu = document.getElementById("dropdownmenu");
 
 darkmode.addEventListener("click", function() {
     document.body.classList.toggle("darkmodestyle");
+
+    if (document.body.classList.contains("darkmodestyle")) {
+        darkmodeicon.src = "../images/lightmode.png.svg";
+    } else {
+        darkmodeicon.src = "../images/darkmode.png.svg";
+    }
+
+
 });
+
+profilebutton.addEventListener("click", function() {
+
+    dropdownmenu.classList.toggle("show");
+});
+
 
 
 
