@@ -6,4 +6,22 @@ console.log(`mijn naam is ${naam} en ik ben ${leeftijd} jaar oud`);
 console.log (`test ${1 + 1}`);
 if (leeftijd >= 18) {
     console.log ("je bent volwassen");
+} else {
+    console.log("je bent minderjarig");
 }
+
+let wachtwoord = "hallo123";
+if (wachtwoord === "hallo123") {
+    console.log ("wachtwoord is correct");
+} else {
+    console.log ("wachtwoord is incorrect");
+}
+
+let darkmode = document.getElementById("darkmode");
+
+darkmode.addEventListener("click", function() {
+    document.body.classList.toggle("darkmodestyle");
+});
+
+
+
