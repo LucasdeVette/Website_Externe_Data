@@ -47,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $order->setItems($items);
 
     if (!empty($items)) {
-        $orderRepo->create($order);
-        flash('success', 'Bestelling #' . $order->getId() . ' is aangemaakt.');
+        $orderId = $orderRepo->create($order);
+        flash('success', 'Bestelling #' . $orderId . ' is aangemaakt.');
         header('Location: /orders/index.php');
         exit;
     } else {
