@@ -61,7 +61,11 @@ require_once __DIR__ . '/../includes/header.php';
         <dd><?= nl2br(htmlspecialchars($order->getNotes() ?? '-')) ?></dd>
       </dl>
       <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);">
-        <a href="/orders/delete.php?id=<?= $order->getId() ?>" class="btn btn-ghost" onclick="return confirm('Bestelling #<?= $order->getId() ?> verwijderen?');" style="color:var(--destructive);font-size:0.8rem;">Bestelling verwijderen</a>
+        <form method="POST" action="/orders/delete.php" onsubmit="return confirm('Bestelling #<?= $order->getId() ?> verwijderen?');">
+          <?= csrfField() ?>
+          <input type="hidden" name="id" value="<?= $order->getId() ?>">
+          <button type="submit" class="btn btn-ghost" style="color:var(--destructive);font-size:0.8rem;">Bestelling verwijderen</button>
+        </form>
       </div>
     </div>
     <div class="detail-card">
