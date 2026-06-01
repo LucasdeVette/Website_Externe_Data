@@ -17,6 +17,12 @@ if ($apiQuery) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['import'])) {
+    if (!isset($_POST['csrf_token']) || !validateCsrfToken($_POST['csrf_token'])) {
+        flash('error', 'Ongeldig token. Probeer opnieuw.');
+        header('Location: /api/index.php');
+        exit;
+    }
+
     $productData = [
         'name' => $_POST['name'] ?? '',
         'barcode' => $_POST['barcode'] ?? null,
@@ -87,6 +93,7 @@ require_once __DIR__ . '/../includes/header.php';
           <?php endif; ?>
 
           <form method="POST" style="margin-top:0.75rem;">
+            <?= csrfField() ?>
             <input type="hidden" name="import" value="1">
             <input type="hidden" name="name" value="<?= htmlspecialchars($item['name']) ?>">
             <input type="hidden" name="barcode" value="<?= htmlspecialchars($item['barcode'] ?? '') ?>">
