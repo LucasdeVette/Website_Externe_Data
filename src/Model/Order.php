@@ -68,7 +68,7 @@ class Order
             'pending'   => 'In afwachting',
             'confirmed' => 'Bevestigd',
             'shipped'   => 'Verzonden',
-            'delivered' => 'Gelevergd',
+            'delivered' => 'Geleverd',
             'cancelled' => 'Geannuleerd',
             default     => $this->status,
         };
