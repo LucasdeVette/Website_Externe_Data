@@ -101,11 +101,15 @@ require_once __DIR__ . '/../includes/header.php';
                   <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                 </svg>
               </a>
-              <a href="/products/delete.php?id=<?= $p->getId() ?>" class="btn-icon btn-icon--danger" title="Verwijderen">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                </svg>
-              </a>
+              <form method="POST" action="/products/delete.php" style="display:inline;" onsubmit="return confirm('Product verwijderen?');">
+                <?= csrfField() ?>
+                <input type="hidden" name="id" value="<?= $p->getId() ?>">
+                <button type="submit" class="btn-icon btn-icon--danger" title="Verwijderen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                  </svg>
+                </button>
+              </form>
             </td>
           </tr>
           <?php endforeach; ?>
