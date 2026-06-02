@@ -78,26 +78,5 @@ require_once __DIR__ . '/../includes/header.php';
   </div>
 </div>
 
-<style>
-.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--background); }
-.data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-.data-table th { text-align: left; padding: 0.75rem 1rem; font-weight: 600; color: var(--muted-foreground); border-bottom: 1px solid var(--border); background: var(--secondary); white-space: nowrap; }
-.data-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
-.data-table tr:last-child td { border-bottom: none; }
-.data-table tr:hover td { background: color-mix(in srgb, var(--secondary) 40%, transparent); }
-.empty-state { text-align: center; padding: 3rem !important; color: var(--muted-foreground); }
-.price { font-weight: 600; white-space: nowrap; }
-.font-mono { font-family: monospace; font-weight: 500; }
-.text-sm { font-size: 0.8rem; color: var(--muted-foreground); }
-.actions { white-space: nowrap; }
-.btn-sm { padding: 0.35rem 0.75rem; font-size: 0.8rem; }
-.btn-ghost--active { background: var(--primary); color: var(--primary-foreground); }
-.status-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; }
-.status-badge--pending { background: #fef3c7; color: #92400e; }
-.status-badge--confirmed { background: #dbeafe; color: #1e40af; }
-.status-badge--shipped { background: #e0e7ff; color: #3730a3; }
-.status-badge--delivered { background: #f0fdf4; color: #166534; }
-.status-badge--cancelled { background: #fef2f2; color: #991b1b; }
-</style>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

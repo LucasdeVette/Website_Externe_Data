@@ -84,24 +84,5 @@ require_once __DIR__ . '/../includes/header.php';
   <?php endif; ?>
 </div>
 
-<style>
-.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--background); }
-.data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-.data-table th { text-align: left; padding: 0.7rem 1rem; font-weight: 600; color: var(--muted-foreground); border-bottom: 1px solid var(--border); background: var(--secondary); white-space: nowrap; }
-.data-table td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); color: var(--foreground); }
-.data-table tr:last-child td { border-bottom: none; }
-.data-table tr:hover td { background: color-mix(in srgb, var(--secondary) 40%, transparent); }
-.product-link { color: var(--foreground); text-decoration: none; font-weight: 500; }
-.product-link:hover { color: var(--primary); }
-.diff--below { color: #16a34a; }
-.diff--above { color: #dc2626; }
-.diff--equal { color: var(--muted-foreground); }
-.card-form { background: var(--background); border: 1px solid var(--border); border-radius: calc(var(--radius) + 0.25rem); padding: 2rem; }
-.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; border-radius: var(--radius); font-weight: 500; font-size: 0.85rem; transition: all 0.15s; border: none; cursor: pointer; font-family: inherit; text-decoration: none; }
-.btn-primary { background: var(--foreground); color: var(--background); }
-.btn-outline { background: transparent; color: var(--foreground); border: 1px solid var(--border); }
-.btn-ghost { background: transparent; color: var(--muted-foreground); }
-.btn-ghost:hover { color: var(--foreground); background: var(--secondary); }
-</style>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

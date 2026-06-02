@@ -128,19 +128,5 @@ require_once __DIR__ . '/../includes/header.php';
   <?php endif; ?>
 </div>
 
-<style>
-.api-card { background: var(--background); border: 1px solid var(--border); border-radius: calc(var(--radius) + 0.25rem); overflow: hidden; display: flex; flex-direction: column; }
-.api-card__img { height: 140px; background: var(--secondary); display: flex; align-items: center; justify-content: center; padding: 1rem; }
-.api-card__img img { max-height: 100%; max-width: 100%; object-fit: contain; }
-.api-card__body { padding: 1rem; flex: 1; display: flex; flex-direction: column; }
-.api-card__title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; color: var(--foreground); }
-.api-card__brand { font-size: 0.8rem; color: var(--muted-foreground); margin-bottom: 0.25rem; }
-.api-card__barcode, .api-card__qty { font-size: 0.75rem; color: var(--muted-foreground); font-family: monospace; }
-.card-form { background: var(--background); border: 1px solid var(--border); border-radius: calc(var(--radius) + 0.25rem); padding: 2rem; }
-.form-input { padding: 0.6rem 0.75rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--background); color: var(--foreground); font-size: 0.875rem; outline: none; }
-.form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 20%, transparent); }
-.msg { padding: 0.75rem 1rem; border-radius: var(--radius); margin-bottom: 1.5rem; font-size: 0.875rem; }
-.msg--success { background: color-mix(in srgb, #22c55e 15%, transparent); border: 1px solid color-mix(in srgb, #22c55e 30%, transparent); color: #166534; }
-</style>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

@@ -137,19 +137,5 @@ require_once __DIR__ . '/../includes/header.php';
   </form>
 </div>
 
-<style>
-.form-card { background: var(--background); border: 1px solid var(--border); border-radius: calc(var(--radius) + 0.25rem); padding: 2rem; }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-.field { display: flex; flex-direction: column; gap: 0.35rem; }
-.field__label { font-size: 0.85rem; font-weight: 500; color: var(--foreground); }
-.field__input { width: 100%; padding: 0.65rem 0.8rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--background); color: var(--foreground); font-size: 0.9rem; outline: none; transition: border-color 0.15s; font-family: inherit; }
-.field__input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent); }
-textarea.field__input { resize: vertical; }
-select.field__input { cursor: pointer; }
-.form-actions { display: flex; gap: 0.75rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-.alert { padding: 1rem 1.25rem; border-radius: var(--radius); margin-bottom: 1.5rem; font-size: 0.875rem; }
-.alert--error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
-@media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
-</style>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

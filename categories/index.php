@@ -152,31 +152,5 @@ require_once __DIR__ . '/../includes/header.php';
   </div>
 </div>
 
-<style>
-.detail-card { background: var(--background); border: 1px solid var(--border); border-radius: calc(var(--radius) + 0.25rem); padding: 1.5rem; }
-.detail-card__title { font-size: 0.875rem; font-weight: 600; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.25rem; }
-.form-group { display: flex; flex-direction: column; gap: 0.35rem; }
-.form-label { font-size: 0.85rem; font-weight: 500; color: var(--foreground); }
-.form-input { width: 100%; padding: 0.6rem 0.75rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--background); color: var(--foreground); font-size: 0.875rem; outline: none; font-family: inherit; }
-.form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 20%, transparent); }
-textarea.form-input { resize: vertical; }
-.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--background); }
-.data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-.data-table th { text-align: left; padding: 0.75rem 1rem; font-weight: 600; color: var(--muted-foreground); border-bottom: 1px solid var(--border); background: var(--secondary); white-space: nowrap; }
-.data-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
-.data-table tr:last-child td { border-bottom: none; }
-.data-table tr:hover td { background: color-mix(in srgb, var(--secondary) 40%, transparent); }
-.empty-state { text-align: center; padding: 3rem !important; color: var(--muted-foreground); }
-.font-medium { font-weight: 500; }
-.text-muted-foreground { color: var(--muted-foreground); }
-.text-sm { font-size: 0.8rem; }
-.actions { white-space: nowrap; }
-.btn-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.75rem; height: 1.75rem; border-radius: var(--radius); color: var(--muted-foreground); transition: all 0.15s; }
-.btn-icon:hover { background: var(--secondary); color: var(--foreground); }
-.btn-icon--danger:hover { background: #fef2f2; color: #dc2626; }
-.alert { padding: 0.75rem 1rem; border-radius: var(--radius); margin-bottom: 1rem; font-size: 0.875rem; }
-.alert--error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
-@media (max-width: 768px) { .grid { grid-template-columns: 1fr !important; } }
-</style>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

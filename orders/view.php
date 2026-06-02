@@ -121,23 +121,5 @@ require_once __DIR__ . '/../includes/header.php';
   </div>
 </div>
 
-<style>
-.detail-card { background: var(--background); border: 1px solid var(--border); border-radius: calc(var(--radius) + 0.25rem); padding: 1.5rem; }
-.detail-card__title { font-size: 0.875rem; font-weight: 600; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
-.detail-list { display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1rem; font-size: 0.875rem; }
-.detail-list dt { color: var(--muted-foreground); font-weight: 500; }
-.detail-list dd { color: var(--foreground); }
-.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--background); }
-.data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-.data-table th { text-align: left; padding: 0.75rem 1rem; font-weight: 600; color: var(--muted-foreground); border-bottom: 1px solid var(--border); background: var(--secondary); }
-.data-table td, .data-table tfoot td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--foreground); }
-.data-table tr:last-child td { border-bottom: none; }
-.data-table tfoot td { border-top: 2px solid var(--border); }
-.badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; }
-.badge--success { background: color-mix(in srgb, #22c55e 15%, transparent); color: #166534; }
-.badge--warning { background: color-mix(in srgb, #f59e0b 15%, transparent); color: #92400e; }
-.badge--danger { background: color-mix(in srgb, #ef4444 15%, transparent); color: #991b1b; }
-.form-input { padding: 0.5rem 0.75rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--background); color: var(--foreground); font-size: 0.875rem; outline: none; }
-</style>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

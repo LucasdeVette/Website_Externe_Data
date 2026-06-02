@@ -38,7 +38,7 @@ require_once __DIR__ . '/includes/header.php';
     </div>
   </div>
 
-  <div class="stats-grid">
+  <div class="stat-cards-grid">
     <div class="stat-card">
       <div class="stat-card__icon stat-card__icon--blue">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -194,104 +194,5 @@ require_once __DIR__ . '/includes/header.php';
   </section>
 </div>
 
-<style>
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.stat-card {
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.stat-card__icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.stat-card__icon--blue { background: color-mix(in srgb, var(--primary) 12%, transparent); color: var(--primary); }
-.stat-card__icon--orange { background: #fef3c7; color: #d97706; }
-.stat-card__icon--red { background: #fef2f2; color: #dc2626; }
-.stat-card__icon--green { background: #f0fdf4; color: #16a34a; }
-.stat-card__icon--purple { background: #f3e8ff; color: #7c3aed; }
-.stat-card__value { font-size: 1.5rem; font-weight: 700; font-family: var(--font-heading); line-height: 1.2; }
-.stat-card__label { font-size: 0.8rem; color: var(--muted-foreground); margin-top: 0.1rem; }
-
-.dashboard-panels {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 0;
-}
-@media (max-width: 768px) {
-  .dashboard-panels { grid-template-columns: 1fr; }
-}
-.panel {
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: calc(var(--radius) + 0.25rem);
-  overflow: hidden;
-}
-.panel__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--border);
-}
-.panel__title { font-size: 1rem; font-weight: 600; }
-.panel__link { font-size: 0.8rem; color: var(--primary); text-decoration: none; }
-.panel__link:hover { text-decoration: underline; }
-
-.table-wrap { overflow-x: auto; }
-.data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-.data-table th { text-align: left; padding: 0.7rem 1.25rem; font-weight: 600; color: var(--muted-foreground); border-bottom: 1px solid var(--border); background: var(--secondary); white-space: nowrap; }
-.data-table td { padding: 0.7rem 1.25rem; border-bottom: 1px solid var(--border); color: var(--foreground); }
-.data-table tr:last-child td { border-bottom: none; }
-.data-table tr:hover td { background: color-mix(in srgb, var(--secondary) 40%, transparent); }
-.empty-state { text-align: center; padding: 2.5rem !important; color: var(--muted-foreground); }
-.product-link { color: var(--foreground); text-decoration: none; font-weight: 500; }
-.product-link:hover { color: var(--primary); }
-
-.stock-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 9999px; font-weight: 600; font-size: 0.8rem; }
-.stock-badge--low { background: #fef3c7; color: #92400e; }
-.stock-badge--empty { background: #fef2f2; color: #991b1b; }
-
-.badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 500; white-space: nowrap; }
-.badge--success { background: #f0fdf4; color: #166534; }
-.badge--warning { background: #fef3c7; color: #92400e; }
-.badge--danger { background: #fef2f2; color: #991b1b; }
-.badge--info { background: #eff6ff; color: #1e40af; }
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.75rem;
-  padding: 1.25rem;
-}
-.category-card {
-  display: block;
-  padding: 1rem;
-  background: var(--secondary);
-  border-radius: var(--radius);
-  text-decoration: none;
-  transition: all 0.15s;
-}
-.category-card:hover { background: var(--primary); }
-.category-card:hover .category-card__name,
-.category-card:hover .category-card__desc { color: white; }
-.category-card__name { font-size: 0.9rem; font-weight: 600; color: var(--foreground); margin-bottom: 0.15rem; }
-.category-card__desc { font-size: 0.75rem; color: var(--muted-foreground); }
-</style>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
