@@ -2,20 +2,11 @@
 
 namespace App\Repository;
 
-use App\Database;
 use App\Model\Order;
 use App\Model\Supplier;
-use PDO;
 
-class OrderRepository
+class OrderRepository extends BaseRepository
 {
-    private PDO $pdo;
-
-    public function __construct()
-    {
-        $this->pdo = Database::getInstance()->getConnection();
-    }
-
     public function findAll(?string $status = null): array
     {
         $sql = 'SELECT o.*, s.name AS supplier_name

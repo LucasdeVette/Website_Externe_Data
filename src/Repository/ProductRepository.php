@@ -2,21 +2,12 @@
 
 namespace App\Repository;
 
-use App\Database;
 use App\Model\Product;
 use App\Model\Category;
 use App\Model\Supplier;
-use PDO;
 
-class ProductRepository
+class ProductRepository extends BaseRepository
 {
-    private PDO $pdo;
-
-    public function __construct()
-    {
-        $this->pdo = Database::getInstance()->getConnection();
-    }
-
     public function findAll(?string $search = null, ?string $sort = null, ?int $categoryId = null): array
     {
         $sql = 'SELECT p.*, c.name AS category_name, s.name AS supplier_name

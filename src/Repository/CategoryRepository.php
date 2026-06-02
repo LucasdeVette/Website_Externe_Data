@@ -2,19 +2,10 @@
 
 namespace App\Repository;
 
-use App\Database;
 use App\Model\Category;
-use PDO;
 
-class CategoryRepository
+class CategoryRepository extends BaseRepository
 {
-    private PDO $pdo;
-
-    public function __construct()
-    {
-        $this->pdo = Database::getInstance()->getConnection();
-    }
-
     public function findAll(): array
     {
         $stmt = $this->pdo->query('SELECT * FROM categories ORDER BY name');

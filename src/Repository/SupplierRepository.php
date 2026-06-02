@@ -2,19 +2,10 @@
 
 namespace App\Repository;
 
-use App\Database;
 use App\Model\Supplier;
-use PDO;
 
-class SupplierRepository
+class SupplierRepository extends BaseRepository
 {
-    private PDO $pdo;
-
-    public function __construct()
-    {
-        $this->pdo = Database::getInstance()->getConnection();
-    }
-
     public function findAll(): array
     {
         $stmt = $this->pdo->query('SELECT * FROM suppliers ORDER BY name');
