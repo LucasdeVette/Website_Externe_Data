@@ -1,0 +1,44 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    environment:
+      DB_HOST: db
+      DB_NAME: ${DB_NAME:-supercharged_db}
+      DB_USER: ${DB_USER:-supercharged_user}
+      DB_PASS: ${DB_PASS:-supercharged_pass}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/var/www/html
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/login.php || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpass}
+      MYSQL_DATABASE: ${DB_NAME:-supercharged_db}
+      MYSQL_USER: ${DB_USER:-supercharged_user}
+      MYSQL_PASSWORD: ${DB_PASS:-supercharged_pass}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    healthcheck:
+      test: mysqladmin ping -h localhost -u root --password=${MYSQL_ROOT_PASSWORD:-rootpass}
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  db_data:
