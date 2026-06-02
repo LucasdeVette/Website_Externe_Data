@@ -20,6 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['status'])) {
         header('Location: /orders/view.php?id=' . $id);
         exit;
     }
+    $allowed = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'];
+    if (!in_array($_POST['status'], $allowed, true)) {
+        flash('error', 'Ongeldige status.');
+        header('Location: /orders/view.php?id=' . $id);
+        exit;
+    }
     $orderRepo->updateStatus($id, $_POST['status']);
     flash('success', 'Status van bestelling #' . $id . ' is bijgewerkt.');
     header('Location: /orders/view.php?id=' . $id);
