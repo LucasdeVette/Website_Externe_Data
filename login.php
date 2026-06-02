@@ -30,11 +30,6 @@ if (isset($_SESSION['user_id'])) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
-  <style>
-    .login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; background-color: var(--muted); }
-    .login-card { background-color: var(--background); border: 1px solid var(--border); border-radius: calc(var(--radius) + 0.5rem); padding: 3rem; width: 100%; max-width: 28rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
-    .login-error { background-color: color-mix(in srgb, var(--destructive) 10%, transparent); color: var(--destructive); padding: 0.75rem 1rem; border-radius: var(--radius); font-size: 0.875rem; margin-bottom: 1.5rem; border: 1px solid color-mix(in srgb, var(--destructive) 30%, transparent); }
-  </style>
 </head>
 <body class="login-page">
   <div class="login-card">

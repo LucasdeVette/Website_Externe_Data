@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../includes/init.php';
-require_once __DIR__ . '/../includes/auth.php';
+requireAuth();
 
 use App\Repository\CategoryRepository;
 use App\Model\Category;

@@ -60,3 +60,11 @@ function getOld(string $key, string $default = ''): string
 {
     return htmlspecialchars($_POST[$key] ?? $default);
 }
+
+function requireAuth(): void
+{
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: /login.php');
+        exit;
+    }
+}
