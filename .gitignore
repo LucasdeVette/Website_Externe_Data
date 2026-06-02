@@ -13,3 +13,9 @@ Thumbs.db
 
 # PHP
 /vendor/
+
+# Test artifacts
+*.png
+*.jpg
+*.webp
+.playwright-mcp/
