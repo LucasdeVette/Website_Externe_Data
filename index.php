@@ -19,7 +19,7 @@ $pendingOrders  = $orderRepo->countByStatus('pending');
 $deliveredOrders = $orderRepo->countByStatus('delivered');
 
 $lowStockProducts = $productRepo->getLowStock(5);
-$recentOrders     = $orderRepo->findAll();
+$recentOrders     = $orderRepo->findRecent(5);
 $categories       = $categoryRepo->findAll();
 
 $title = 'Dashboard';
@@ -159,7 +159,7 @@ require_once __DIR__ . '/includes/header.php';
             <?php if (empty($recentOrders)): ?>
               <tr><td colspan="5" class="empty-state">Geen bestellingen</td></tr>
             <?php else: ?>
-              <?php foreach (array_slice($recentOrders, 0, 5) as $o): ?>
+              <?php foreach ($recentOrders as $o): ?>
               <tr>
                 <td><a href="/orders/view.php?id=<?= $o->getId() ?>" class="product-link">#<?= $o->getId() ?></a></td>
                 <td class="text-muted-foreground"><?= htmlspecialchars($o->getOrderDate()) ?></td>

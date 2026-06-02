@@ -47,6 +47,7 @@ class Order
     public function setSupplier(?Supplier $sup): void { $this->supplier = $sup; }
     public function getItems(): array { return $this->items; }
     public function setItems(array $items): void { $this->items = $items; }
+    public function addItem(array $item): void { $this->items[] = $item; }
 
     public function getItemCount(): int
     {

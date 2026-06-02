@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Database;
 use App\Model\Order;
+use App\Model\Supplier;
 use PDO;
 
 class OrderRepository
@@ -32,29 +33,81 @@ class OrderRepository
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
-        $orders = [];
-        foreach ($stmt->fetchAll() as $row) {
-            $order = new Order($row);
-            $order->setItems($this->getItems($order->getId()));
-            $orders[] = $order;
+        $rows = $stmt->fetchAll();
+
+        if (empty($rows)) {
+            return [];
         }
-        return $orders;
+
+        $orders = [];
+        $ids = [];
+        foreach ($rows as $row) {
+            $orders[$row['id']] = new Order($row);
+            $ids[] = $row['id'];
+        }
+
+        $this->loadItems($orders, $ids);
+
+        return array_values($orders);
+    }
+
+    public function findRecent(int $limit = 5): array
+    {
+        $stmt = $this->pdo->prepare(
+            'SELECT o.*, s.name AS supplier_name
+             FROM orders o
+             LEFT JOIN suppliers s ON o.supplier_id = s.id
+             ORDER BY o.order_date DESC, o.created_at DESC
+             LIMIT ?'
+        );
+        $stmt->execute([$limit]);
+        $rows = $stmt->fetchAll();
+
+        if (empty($rows)) {
+            return [];
+        }
+
+        $orders = [];
+        $ids = [];
+        foreach ($rows as $row) {
+            $orders[$row['id']] = new Order($row);
+            $ids[] = $row['id'];
+        }
+
+        $this->loadItems($orders, $ids);
+
+        return array_values($orders);
     }
 
     public function findById(int $id): ?Order
     {
         $stmt = $this->pdo->prepare(
-            'SELECT o.*, s.name AS supplier_name
+            'SELECT o.*, s.name AS supplier_name,
+                    s.contact_person, s.email, s.phone, s.address
              FROM orders o
              LEFT JOIN suppliers s ON o.supplier_id = s.id
              WHERE o.id = ?'
         );
         $stmt->execute([$id]);
         $row = $stmt->fetch();
-        if (!$row) return null;
+        if (!$row) {
+            return null;
+        }
 
         $order = new Order($row);
         $order->setItems($this->getItems($id));
+
+        if ($row['supplier_id'] && $row['supplier_name']) {
+            $order->setSupplier(new Supplier([
+                'id'             => $row['supplier_id'],
+                'name'           => $row['supplier_name'],
+                'contact_person' => $row['contact_person'],
+                'email'          => $row['email'],
+                'phone'          => $row['phone'],
+                'address'        => $row['address'],
+            ]));
+        }
+
         return $order;
     }
 
@@ -134,5 +187,21 @@ class OrderRepository
     {
         $stmt = $this->pdo->query('SELECT COUNT(*) FROM orders');
         return (int) $stmt->fetchColumn();
+    }
+
+    private function loadItems(array &$orders, array $ids): void
+    {
+        $placeholders = implode(',', array_fill(0, count($ids), '?'));
+        $stmt = $this->pdo->prepare(
+            "SELECT oi.*, p.name AS product_name
+             FROM order_items oi
+             JOIN products p ON oi.product_id = p.id
+             WHERE oi.order_id IN ($placeholders)
+             ORDER BY p.name"
+        );
+        $stmt->execute($ids);
+        foreach ($stmt->fetchAll() as $item) {
+            $orders[$item['order_id']]->addItem($item);
+        }
     }
 }
