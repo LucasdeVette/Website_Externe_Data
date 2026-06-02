@@ -774,34 +774,6 @@ input {
         display: none;
     }
 
-    .feature-card {
-        padding: 1rem;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .grid-cols-3 {
-        grid-template-columns: 1fr !important;
-    }
-
-    .grid-cols-2 {
-        grid-template-columns: 1fr !important;
-    }
-
-    .grid {
-        grid-template-columns: 1fr !important;
-    }
-
     .orders-status-filters {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -832,19 +804,6 @@ input {
     }
 }
 
-@media (min-width: 640px) {
-    .sm\:flex-row {
-        flex-direction: row;
-    }
-    .hero-actions {
-        flex-direction: row;
-    }
-    .cta-actions {
-        flex-direction: row;
-    }
-    .hero-title {
-        font-size: 3.75rem;
-    }
 }
 
 @media (min-width: 768px) {
@@ -860,28 +819,11 @@ input {
     .md\:grid-cols-2 {
         grid-template-columns: repeat(2, 1fr);
     }
-    .hero-title {
-        font-size: 4.5rem;
-    }
-    .hero-subtitle {
-        font-size: 1.25rem;
-    }
-    .features-title {
-        font-size: 2.25rem;
-    }
-    .cta-title {
-        font-size: 2.25rem;
-    }
     .footer-top {
         flex-direction: row;
         align-items: center;
     }
-    .branded-panel {
-        display: flex;
-    }
-    .login-panel {
-        padding: 2rem 4rem;
-    }
+
 }
 
 @media (min-width: 1024px) {
@@ -894,16 +836,9 @@ input {
     .lg\:grid-cols-4 {
         grid-template-columns: repeat(4, 1fr);
     }
-    .login-panel {
-        padding: 2rem 6rem;
-    }
+
 }
 
-/* Mobile nav fix for login */
-@media (max-width: 1023px) {
-    .branded-panel {
-        display: none;
-    }
 }
 
 /* ========== FLASH MESSAGES ========== */
