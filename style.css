@@ -400,25 +400,6 @@ input {
     color: #ffffff;
 }
 
-.bg-background {
-    background-color: var(--background);
-}
-.bg-foreground {
-    background-color: var(--foreground);
-}
-.bg-primary {
-    background-color: var(--primary);
-}
-.bg-secondary {
-    background-color: var(--secondary);
-}
-.bg-muted {
-    background-color: var(--muted);
-}
-.bg-border {
-    background-color: var(--border);
-}
-
 .border {
     border: 1px solid var(--border);
 }
@@ -565,24 +546,6 @@ input {
 
 .btn-ghost:hover {
     color: var(--foreground);
-}
-
-.btn-primary-blue {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-}
-
-.btn-primary-blue:hover {
-    opacity: 0.9;
-}
-
-.btn-light {
-    background-color: var(--background);
-    color: var(--foreground);
-}
-
-.btn-light:hover {
-    opacity: 0.9;
 }
 
 .btn:disabled {
