@@ -5,5 +5,5 @@ use App\Service\AuthService;
 
 $auth = new AuthService();
 $auth->logout();
-header('Location: /login.php');
+header('Location: /');
 exit;
