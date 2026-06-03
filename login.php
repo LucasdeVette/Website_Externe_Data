@@ -33,7 +33,7 @@ if (isset($_SESSION['user_id'])) {
 </head>
 <body class="login-page">
   <div class="login-card">
-    <div class="text-center mb-8">
+    <div class="text-center" style="margin-bottom:2rem;">
       <a href="/" class="logo" style="justify-content:center;">
         <span class="logo-icon">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
@@ -45,27 +45,27 @@ if (isset($_SESSION['user_id'])) {
         </span>
         <span class="logo-text"><?= APP_NAME ?></span>
       </a>
-      <h1 class="login-title" style="margin-top:1.5rem;">Welkom terug</h1>
-      <p class="login-desc">Log in om door te gaan</p>
+      <h1 style="font-size:1.5rem;font-weight:600;margin-top:1.5rem;">Welkom terug</h1>
+      <p class="text-muted-foreground">Log in om door te gaan</p>
     </div>
 
     <?php if ($error): ?>
       <div class="login-error"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
 
-    <form method="POST" class="login-form">
-      <div class="form-group">
-        <label for="username" class="form-label">Gebruikersnaam</label>
-        <input id="username" name="username" type="text" class="form-input" placeholder="admin" required>
+    <form method="POST" style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="field">
+        <label for="username" class="field__label">Gebruikersnaam</label>
+        <input id="username" name="username" type="text" class="field__input" placeholder="admin" required>
       </div>
-      <div class="form-group">
-        <label for="password" class="form-label">Wachtwoord</label>
-        <input id="password" name="password" type="password" class="form-input" placeholder="wachtwoord" required>
+      <div class="field">
+        <label for="password" class="field__label">Wachtwoord</label>
+        <input id="password" name="password" type="password" class="field__input" placeholder="wachtwoord" required>
       </div>
-      <button type="submit" class="btn btn-primary btn-block btn-submit">Inloggen</button>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:0.5rem;">Inloggen</button>
     </form>
 
-    <p class="form-footer" style="margin-top:1.5rem;">
+    <p class="text-muted-foreground" style="font-size:0.85rem;margin-top:1.5rem;text-align:center;">
       Demo: <strong>admin</strong> / <strong>password</strong>
     </p>
   </div>
