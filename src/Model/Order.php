@@ -6,7 +6,6 @@ class Order
 {
     private int $id;
     private ?int $supplierId;
-    private ?string $supplierName = null;
     private string $orderDate;
     private string $status;
     private ?string $notes;
@@ -20,7 +19,6 @@ class Order
     {
         $this->id           = (int) ($data['id'] ?? 0);
         $this->supplierId   = isset($data['supplier_id']) ? (int) $data['supplier_id'] : null;
-        $this->supplierName = $data['supplier_name'] ?? null;
         $this->orderDate    = $data['order_date'] ?? date('Y-m-d');
         $this->status     = $data['status'] ?? 'pending';
         $this->notes      = $data['notes'] ?? null;
@@ -32,8 +30,6 @@ class Order
     public function setId(int $id): void { $this->id = $id; }
     public function getSupplierId(): ?int { return $this->supplierId; }
     public function setSupplierId(?int $id): void { $this->supplierId = $id; }
-    public function getSupplierName(): ?string { return $this->supplierName; }
-    public function setSupplierName(?string $name): void { $this->supplierName = $name; }
     public function getOrderDate(): string { return $this->orderDate; }
     public function setOrderDate(string $date): void { $this->orderDate = $date; }
     public function getStatus(): string { return $this->status; }

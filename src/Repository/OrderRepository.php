@@ -33,7 +33,11 @@ class OrderRepository extends BaseRepository
         $orders = [];
         $ids = [];
         foreach ($rows as $row) {
-            $orders[$row['id']] = new Order($row);
+            $order = new Order($row);
+            if ($row['supplier_id'] && $row['supplier_name']) {
+                $order->setSupplier(new Supplier(['id' => $row['supplier_id'], 'name' => $row['supplier_name']]));
+            }
+            $orders[$row['id']] = $order;
             $ids[] = $row['id'];
         }
 
@@ -61,7 +65,11 @@ class OrderRepository extends BaseRepository
         $orders = [];
         $ids = [];
         foreach ($rows as $row) {
-            $orders[$row['id']] = new Order($row);
+            $order = new Order($row);
+            if ($row['supplier_id'] && $row['supplier_name']) {
+                $order->setSupplier(new Supplier(['id' => $row['supplier_id'], 'name' => $row['supplier_name']]));
+            }
+            $orders[$row['id']] = $order;
             $ids[] = $row['id'];
         }
 

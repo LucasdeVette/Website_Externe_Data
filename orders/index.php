@@ -52,7 +52,7 @@ require_once __DIR__ . '/../includes/header.php';
           <tr>
             <td class="font-mono">#<?= $o->getId() ?></td>
             <td class="text-sm"><?= htmlspecialchars($o->getCreatedAt() ? date('d-m-Y H:i', strtotime($o->getCreatedAt())) : '-') ?></td>
-            <td><?= htmlspecialchars($o->getSupplierName() ?? 'Onbekend') ?></td>
+            <td><?= htmlspecialchars($o->getSupplier()?->getName() ?? '-') ?></td>
             <td><?= $o->getItemCount() ?></td>
             <td class="price">&euro;<?= number_format($o->getTotalAmount(), 2) ?></td>
             <td>
