@@ -63,7 +63,7 @@ require_once __DIR__ . '/../includes/header.php';
   </p>
 
   <form method="GET" class="flex items-center gap-3" style="margin-bottom:2rem;">
-    <input type="search" name="q" class="form-input" style="flex:1;min-width:200px;max-width:400px;" placeholder="Zoek product (bv. 'chocolate', 'pasta')..." value="<?= htmlspecialchars($apiQuery) ?>" required>
+    <input type="search" name="q" class="field__input" style="flex:1;min-width:200px;max-width:400px;" placeholder="Zoek product (bv. 'chocolate', 'pasta')..." value="<?= htmlspecialchars($apiQuery) ?>" required>
     <button type="submit" class="btn btn-primary">Zoeken</button>
   </form>
 

@@ -75,24 +75,24 @@ require_once __DIR__ . '/../includes/header.php';
   <form method="POST" class="card-form" id="orderForm">
     <?= csrfField() ?>
     <div class="grid" style="grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;">
-      <div class="form-group">
-        <label class="form-label" for="supplier_id">Leverancier</label>
-        <select id="supplier_id" name="supplier_id" class="form-input">
+      <div class="field">
+        <label class="field__label" for="supplier_id">Leverancier</label>
+        <select id="supplier_id" name="supplier_id" class="field__input">
           <option value="">-- Selecteer --</option>
           <?php foreach ($suppliers as $s): ?>
             <option value="<?= $s->getId() ?>"><?= htmlspecialchars($s->getName()) ?></option>
           <?php endforeach; ?>
         </select>
       </div>
-      <div class="form-group">
-        <label class="form-label" for="order_date">Besteldatum</label>
-        <input id="order_date" name="order_date" type="date" class="form-input" value="<?= date('Y-m-d') ?>">
+      <div class="field">
+        <label class="field__label" for="order_date">Besteldatum</label>
+        <input id="order_date" name="order_date" type="date" class="field__input" value="<?= date('Y-m-d') ?>">
       </div>
     </div>
 
-    <div class="form-group" style="grid-column:1/-1;">
-      <label class="form-label" for="notes">Notities</label>
-      <textarea id="notes" name="notes" class="form-input" rows="2"></textarea>
+    <div class="field" style="grid-column:1/-1;">
+      <label class="field__label" for="notes">Notities</label>
+      <textarea id="notes" name="notes" class="field__input" rows="2"></textarea>
     </div>
 
     <h2 class="text-lg font-semibold" style="margin-bottom:1rem;">Producten</h2>
@@ -110,7 +110,7 @@ require_once __DIR__ . '/../includes/header.php';
         <tbody>
           <tr class="item-row">
             <td>
-              <select name="items[0][product_id]" class="form-input product-select">
+              <select name="items[0][product_id]" class="field__input product-select">
                 <option value="">-- Kies product --</option>
                 <?php foreach ($products as $p): ?>
                   <option value="<?= $p->getId() ?>" data-price="<?= $p->getPrice() ?>">
@@ -119,8 +119,8 @@ require_once __DIR__ . '/../includes/header.php';
                 <?php endforeach; ?>
               </select>
             </td>
-            <td><input type="number" name="items[0][quantity]" class="form-input" min="1" value="1"></td>
-            <td><input type="number" name="items[0][unit_price]" class="form-input unit-price" step="0.01" min="0"></td>
+            <td><input type="number" name="items[0][quantity]" class="field__input" min="1" value="1"></td>
+            <td><input type="number" name="items[0][unit_price]" class="field__input unit-price" step="0.01" min="0"></td>
             <td><button type="button" class="btn-ghost remove-item" style="padding:0.25rem 0.5rem;color:var(--destructive);">&times;</button></td>
           </tr>
         </tbody>

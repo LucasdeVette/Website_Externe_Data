@@ -44,7 +44,7 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
     <form method="POST" class="flex items-center gap-2">
       <?= csrfField() ?>
-      <select name="status" class="form-input" style="width:auto;min-width:140px;">
+      <select name="status" class="field__input" style="width:auto;min-width:140px;">
         <option value="pending" <?= $order->getStatus() === 'pending' ? 'selected' : '' ?>>In afwachting</option>
         <option value="confirmed" <?= $order->getStatus() === 'confirmed' ? 'selected' : '' ?>>Bevestigd</option>
         <option value="shipped" <?= $order->getStatus() === 'shipped' ? 'selected' : '' ?>>Verzonden</option>

@@ -31,10 +31,10 @@ require_once __DIR__ . '/../includes/header.php';
   <form method="GET" class="filter-bar">
     <div class="filter-bar__row">
       <div class="filter-group">
-        <input type="search" name="search" class="form-input" placeholder="Zoeken op naam, barcode..." value="<?= htmlspecialchars($search ?? '') ?>">
+        <input type="search" name="search" class="field__input" placeholder="Zoeken op naam, barcode..." value="<?= htmlspecialchars($search ?? '') ?>">
       </div>
       <div class="filter-group">
-        <select name="category_id" class="form-input">
+        <select name="category_id" class="field__input">
           <option value="">Alle categorieën</option>
           <?php foreach ($categories as $cat): ?>
             <option value="<?= $cat->getId() ?>" <?= $categoryId == $cat->getId() ? 'selected' : '' ?>><?= htmlspecialchars($cat->getName()) ?></option>
@@ -42,7 +42,7 @@ require_once __DIR__ . '/../includes/header.php';
         </select>
       </div>
       <div class="filter-group">
-        <select name="sort" class="form-input">
+        <select name="sort" class="field__input">
           <option value="">Sorteer: naam</option>
           <option value="price_asc" <?= $sort === 'price_asc' ? 'selected' : '' ?>>Prijs oplopend</option>
           <option value="price_desc" <?= $sort === 'price_desc' ? 'selected' : '' ?>>Prijs aflopend</option>

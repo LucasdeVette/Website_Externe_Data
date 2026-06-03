@@ -89,14 +89,14 @@ require_once __DIR__ . '/../includes/header.php';
           <input type="hidden" name="id" value="<?= $edit->getId() ?>">
         <?php endif; ?>
 
-        <div class="form-group" style="margin-bottom:1rem;">
-          <label class="form-label" for="name">Naam *</label>
-          <input id="name" name="name" type="text" class="form-input" value="<?= htmlspecialchars($_POST['name'] ?? ($edit ? $edit->getName() : '')) ?>" required>
+        <div class="field" style="margin-bottom:1rem;">
+          <label class="field__label" for="name">Naam *</label>
+          <input id="name" name="name" type="text" class="field__input" value="<?= htmlspecialchars($_POST['name'] ?? ($edit ? $edit->getName() : '')) ?>" required>
         </div>
 
-        <div class="form-group" style="margin-bottom:1.5rem;">
-          <label class="form-label" for="description">Beschrijving</label>
-          <textarea id="description" name="description" class="form-input" rows="3"><?= htmlspecialchars($_POST['description'] ?? ($edit ? $edit->getDescription() ?? '' : '')) ?></textarea>
+        <div class="field" style="margin-bottom:1.5rem;">
+          <label class="field__label" for="description">Beschrijving</label>
+          <textarea id="description" name="description" class="field__input" rows="3"><?= htmlspecialchars($_POST['description'] ?? ($edit ? $edit->getDescription() ?? '' : '')) ?></textarea>
         </div>
 
         <div class="flex gap-2">

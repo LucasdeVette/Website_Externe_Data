@@ -99,25 +99,25 @@ require_once __DIR__ . '/../includes/header.php';
           <input type="hidden" name="id" value="<?= $edit->getId() ?>">
         <?php endif; ?>
 
-        <div class="form-group" style="margin-bottom:1rem;">
-          <label class="form-label" for="name">Naam *</label>
-          <input id="name" name="name" type="text" class="form-input" value="<?= htmlspecialchars($_POST['name'] ?? ($edit ? $edit->getName() : '')) ?>" required>
+        <div class="field" style="margin-bottom:1rem;">
+          <label class="field__label" for="name">Naam *</label>
+          <input id="name" name="name" type="text" class="field__input" value="<?= htmlspecialchars($_POST['name'] ?? ($edit ? $edit->getName() : '')) ?>" required>
         </div>
-        <div class="form-group" style="margin-bottom:1rem;">
-          <label class="form-label" for="contact_person">Contactpersoon</label>
-          <input id="contact_person" name="contact_person" type="text" class="form-input" value="<?= htmlspecialchars($_POST['contact_person'] ?? ($edit ? $edit->getContactPerson() ?? '' : '')) ?>">
+        <div class="field" style="margin-bottom:1rem;">
+          <label class="field__label" for="contact_person">Contactpersoon</label>
+          <input id="contact_person" name="contact_person" type="text" class="field__input" value="<?= htmlspecialchars($_POST['contact_person'] ?? ($edit ? $edit->getContactPerson() ?? '' : '')) ?>">
         </div>
-        <div class="form-group" style="margin-bottom:1rem;">
-          <label class="form-label" for="email">E-mail</label>
-          <input id="email" name="email" type="email" class="form-input" value="<?= htmlspecialchars($_POST['email'] ?? ($edit ? $edit->getEmail() ?? '' : '')) ?>">
+        <div class="field" style="margin-bottom:1rem;">
+          <label class="field__label" for="email">E-mail</label>
+          <input id="email" name="email" type="email" class="field__input" value="<?= htmlspecialchars($_POST['email'] ?? ($edit ? $edit->getEmail() ?? '' : '')) ?>">
         </div>
-        <div class="form-group" style="margin-bottom:1rem;">
-          <label class="form-label" for="phone">Telefoon</label>
-          <input id="phone" name="phone" type="text" class="form-input" value="<?= htmlspecialchars($_POST['phone'] ?? ($edit ? $edit->getPhone() ?? '' : '')) ?>">
+        <div class="field" style="margin-bottom:1rem;">
+          <label class="field__label" for="phone">Telefoon</label>
+          <input id="phone" name="phone" type="text" class="field__input" value="<?= htmlspecialchars($_POST['phone'] ?? ($edit ? $edit->getPhone() ?? '' : '')) ?>">
         </div>
-        <div class="form-group" style="margin-bottom:1.5rem;">
-          <label class="form-label" for="address">Adres</label>
-          <textarea id="address" name="address" class="form-input" rows="2"><?= htmlspecialchars($_POST['address'] ?? ($edit ? $edit->getAddress() ?? '' : '')) ?></textarea>
+        <div class="field" style="margin-bottom:1.5rem;">
+          <label class="field__label" for="address">Adres</label>
+          <textarea id="address" name="address" class="field__input" rows="2"><?= htmlspecialchars($_POST['address'] ?? ($edit ? $edit->getAddress() ?? '' : '')) ?></textarea>
         </div>
 
         <div class="flex gap-2">
