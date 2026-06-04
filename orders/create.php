@@ -14,47 +14,42 @@ $productRepo = new ProductRepository();
 $suppliers = $supplierRepo->findAll();
 $products = $productRepo->findAll();
 
-$csrfValid = true;
+$error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!isset($_POST['csrf_token']) || !validateCsrfToken($_POST['csrf_token'])) {
-        $error = 'Ongeldig token. Probeer opnieuw.';
-        $csrfValid = false;
+    if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
+        flash('error', 'Ongeldig token. Probeer opnieuw.');
+        header('Location: /orders/create.php');
+        exit;
     }
 
-    if ($csrfValid) {
-    $order = new Order([
-        'supplier_id' => !empty($_POST['supplier_id']) ? (int)$_POST['supplier_id'] : null,
-        'order_date' => $_POST['order_date'] ?? date('Y-m-d'),
-        'status' => 'pending',
-        'notes' => trim($_POST['notes'] ?? ''),
-    ]);
-
     $items = [];
-    if (isset($_POST['items'])) {
-        foreach ($_POST['items'] as $item) {
-            if (!empty($item['product_id']) && !empty($item['quantity'])) {
-                $product = $productRepo->findById((int)$item['product_id']);
-                if ($product) {
-                    $items[] = [
-                        'product_id' => $product->getId(),
-                        'quantity' => (int)$item['quantity'],
-                        'unit_price' => (float)$item['unit_price'],
-                    ];
-                }
+    foreach ($_POST['items'] ?? [] as $item) {
+        if (!empty($item['product_id']) && !empty($item['quantity'])) {
+            $product = $productRepo->findById((int) $item['product_id']);
+            if ($product) {
+                $items[] = [
+                    'product_id' => $product->getId(),
+                    'quantity'   => (int) $item['quantity'],
+                    'unit_price' => (float) $item['unit_price'],
+                ];
             }
         }
     }
-    $order->setItems($items);
 
-    if (!empty($items)) {
+    if (empty($items)) {
+        $error = 'Voeg ten minste één product toe.';
+    } else {
+        $order = new Order([
+            'supplier_id' => !empty($_POST['supplier_id']) ? (int) $_POST['supplier_id'] : null,
+            'order_date'  => $_POST['order_date'] ?? date('Y-m-d'),
+            'status'      => 'pending',
+            'notes'       => trim($_POST['notes'] ?? ''),
+        ]);
+        $order->setItems($items);
         $orderId = $orderRepo->create($order);
         flash('success', 'Bestelling #' . $orderId . ' is aangemaakt.');
         header('Location: /orders/index.php');
         exit;
-    } else {
-        $error = 'Voeg ten minste één product toe.';
-        flash('error', $error);
-    }
     }
 }
 

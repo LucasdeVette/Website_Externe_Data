@@ -4,6 +4,7 @@ namespace App;
 
 use PDO;
 use PDOException;
+use RuntimeException;
 
 class Database
 {
@@ -12,12 +13,7 @@ class Database
 
     private function __construct()
     {
-        $dsn = sprintf(
-            'mysql:host=%s;dbname=%s;charset=%s',
-            DB_HOST,
-            DB_NAME,
-            DB_CHARSET
-        );
+        $dsn = sprintf('mysql:host=%s;dbname=%s;charset=%s', DB_HOST, DB_NAME, DB_CHARSET);
 
         try {
             $this->pdo = new PDO($dsn, DB_USER, DB_PASS, [
@@ -26,7 +22,8 @@ class Database
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ]);
         } catch (PDOException $e) {
-            die('Database verbinding mislukt: ' . $e->getMessage());
+            error_log('Database connection failed: ' . $e->getMessage());
+            throw new RuntimeException('Database niet beschikbaar. Probeer het later opnieuw.');
         }
     }
 

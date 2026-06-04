@@ -10,6 +10,7 @@ RUN groupadd -r appuser && useradd -r -g appuser -d /var/www/html -s /sbin/nolog
     sed -i 's/APACHE_RUN_USER:=www-data/APACHE_RUN_USER:=appuser/' /etc/apache2/envvars && \
     sed -i 's/APACHE_RUN_GROUP:=www-data/APACHE_RUN_GROUP:=appuser/' /etc/apache2/envvars
 
+COPY config/php.ini /usr/local/etc/php/conf.d/app.ini
 COPY . /var/www/html/
 
 RUN chown -R appuser:appuser /var/www/html && \
