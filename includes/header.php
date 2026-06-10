@@ -46,7 +46,9 @@ $flashError = flash('error');
         <a href="/categories/index.php" class="nav-link <?= isActive('', 'categories') ?>">Categorieën</a>
         <a href="/suppliers/index.php" class="nav-link <?= isActive('', 'suppliers') ?>">Leveranciers</a>
         <a href="/orders/index.php" class="nav-link <?= isActive('', 'orders') ?>">Bestellingen</a>
+        <a href="/personeel/index.php" class="nav-link <?= isActive('', 'personeel') ?>">Personeel</a>
         <a href="/competitors/index.php" class="nav-link <?= isActive('', 'competitors') ?>">Concurrenten</a>
+        <a href="/prices/index.php" class="nav-link <?= isActive('', 'prices') ?>">Prijzen</a>
         <a href="/api/index.php" class="nav-link <?= isActive('', 'api') ?>">API Zoeken</a>
       </nav>
 
@@ -69,7 +71,9 @@ $flashError = flash('error');
       <a href="/categories/index.php" class="nav-link <?= isActive('', 'categories') ?>">Categorieën</a>
       <a href="/suppliers/index.php" class="nav-link <?= isActive('', 'suppliers') ?>">Leveranciers</a>
       <a href="/orders/index.php" class="nav-link <?= isActive('', 'orders') ?>">Bestellingen</a>
+      <a href="/personeel/index.php" class="nav-link <?= isActive('', 'personeel') ?>">Personeel</a>
       <a href="/competitors/index.php" class="nav-link <?= isActive('', 'competitors') ?>">Concurrenten</a>
+      <a href="/prices/index.php" class="nav-link <?= isActive('', 'prices') ?>">Prijzen</a>
       <a href="/api/index.php" class="nav-link <?= isActive('', 'api') ?>">API Zoeken</a>
       <div class="mobile-nav__footer">
         <span class="text-sm text-muted-foreground"><?= htmlspecialchars($displayName) ?></span>
