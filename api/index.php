@@ -113,13 +113,6 @@ require_once __DIR__ . '/../includes/header.php';
       <p class="text-muted-foreground">Geen resultaten gevonden voor "<?= htmlspecialchars($apiQuery) ?>".</p>
     </div>
   <?php else: ?>
-    <div class="detail-card" style="margin-bottom:2rem;padding:1rem 1.5rem;">
-      <p class="text-sm text-muted-foreground" style="display:flex;align-items:center;gap:0.5rem;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        Geïmporteerde producten met een barcode kunnen automatisch worden vergeleken met concurrentprijzen via de <a href="/competitors/index.php" style="color:var(--primary);font-weight:500;">Concurrenten-pagina</a>.
-      </p>
-    </div>
-
     <div class="card-form" style="text-align:center;padding:3rem;">
       <div style="font-size:3rem;margin-bottom:1rem;opacity:0.3;">
         <svg width="64" height="64" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;">

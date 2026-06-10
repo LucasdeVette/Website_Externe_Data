@@ -963,14 +963,6 @@ input {
 .product-link:hover,
 .product-name:hover { color: var(--primary); }
 
-.edit-link {
-    color: var(--foreground);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--border);
-}
-
-.edit-link:hover { color: var(--primary); border-bottom-color: var(--primary); }
-
 /* ========== DETAIL CARDS ========== */
 .detail-card {
     background: var(--background);
