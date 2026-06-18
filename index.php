@@ -69,6 +69,13 @@ if (!isset($_SESSION['user_id'])):
     <p class="text-muted-foreground" style="font-size:0.85rem;margin-top:1.5rem;text-align:center;">
       Demo: <strong>admin</strong> / <strong>password</strong>
     </p>
+    
+
+    <p class="text-muted-foreground" style="font-size:0.85rem;margin-top:1rem;text-align:center;">
+    Nog geen account?
+    <a href="/register.php">Account registreren</a>
+    </p>
+    
   </div>
 </body>
 </html>

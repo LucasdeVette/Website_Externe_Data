@@ -31,6 +31,19 @@ class AuthService
         return false;
     }
 
+//Lucas (functie registreren)
+public function register(string $username, string $password, string $displayName, string $email): bool
+{
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+    $stmt = $this->pdo->prepare(
+        'INSERT INTO users (username, password_hash, display_name, email)
+         VALUES (?, ?, ?, ?)'
+    );
+
+    return $stmt->execute([$username, $passwordHash, $displayName, $email]);
+}
+//
     public function logout(): void
     {
         $_SESSION = [];
