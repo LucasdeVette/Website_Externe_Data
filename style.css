@@ -663,6 +663,47 @@ input {
     min-height: calc(100vh - 10rem);
 }
 
+/* ========== PERSONEEL SIDEBAR LAYOUT ========== */
+.personeel-layout {
+  display: flex;
+  gap: 2rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  align-items: flex-start;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.personeel-sidebar {
+  flex-shrink: 0;
+  width: 260px;
+  position: sticky;
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+
+.personeel-sidebar .detail-card {
+  padding: 1rem;
+}
+
+.personeel-main {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .personeel-layout {
+    flex-direction: column;
+    padding: 1rem 1rem 2rem;
+    gap: 1rem;
+  }
+  .personeel-sidebar {
+    position: static;
+    width: 100%;
+    max-height: none;
+  }
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 767px) {
     .nav-desktop {
@@ -1226,4 +1267,129 @@ select.field__input { cursor: pointer; }
     .detail-card { padding: 1rem; }
     .detail-list { grid-template-columns: 1fr; gap: 0.25rem; }
     .detail-list dt { margin-top: 0.5rem; }
+}
+
+/* ========== DAY ACCORDION ========== */
+.day-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.day-card {
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) + 0.25rem);
+    background: var(--background);
+    overflow: hidden;
+}
+
+.day-card--today {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+.day-card__summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.day-card__summary::-webkit-details-marker {
+    display: none;
+}
+
+.day-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+}
+
+.day-card__info {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.day-card__dayname {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--foreground);
+}
+
+.day-card__date {
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+}
+
+.day-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+}
+
+.day-card__count {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.day-card__count--none {
+    color: var(--muted-foreground);
+}
+
+.day-card__hours {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--foreground);
+}
+
+.day-card__arrow {
+    font-size: 0.6rem;
+    color: var(--muted-foreground);
+    transition: transform 0.2s;
+}
+
+.day-card[open] .day-card__arrow {
+    transform: rotate(180deg);
+}
+
+.day-card__body {
+    padding: 0 1rem 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.day-card__body .table-wrap {
+    margin: 0 -1rem;
+    border-radius: 0;
+}
+
+.day-card__body .data-table th:first-child,
+.day-card__body .data-table td:first-child {
+    padding-left: 1rem;
+}
+
+.day-card__body .data-table th:last-child,
+.day-card__body .data-table td:last-child {
+    padding-right: 1rem;
+}
+
+@media (max-width: 767px) {
+    .day-card__header {
+        flex-wrap: wrap;
+        padding: 0.6rem 0.75rem;
+    }
+
+    .day-card__info {
+        gap: 0.4rem;
+    }
+
+    .day-card__meta {
+        gap: 0.4rem;
+    }
+
+    .day-card__body {
+        padding: 0 0.75rem 0.75rem;
+    }
 }
