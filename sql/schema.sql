@@ -100,23 +100,23 @@ INSERT INTO suppliers (name, contact_person, email, phone, address) VALUES
 ('Zuivelhoeve Groep', 'Maria Jansen', 'maria@zuivelhoeve.nl', '020-7654321', 'Melkweg 8, 1015 AB Amsterdam'),
 ('Vers & Rechtstreeks', 'Pieter Bakker', 'pieter@versrechtstreeks.nl', '030-9876543', 'Oogststraat 22, 3512 JK Utrecht');
 
-INSERT INTO products (category_id, supplier_id, name, description, price, stock, min_stock) VALUES
-(1, 2, 'Volle Melk 1L', 'Verse volle melk, 1 liter', 1.89, 120, 30),
-(1, 2, 'Goudse Kaas 48+', 'Gerijpte Goudse kaas, 500g', 4.99, 45, 10),
-(1, 2, 'Magere Yoghurt 500g', 'Magere yoghurt, natuur', 1.29, 60, 20),
-(2, 1, 'Wit Brood', 'Vers witbrood, heel', 2.49, 30, 10),
-(2, 1, 'Volkoren Brood', 'Gezond volkorenbrood', 2.79, 25, 10),
-(3, 3, 'Appels Goudreinet', 'Nederlandse goudreinetten, 1kg', 2.99, 80, 20),
-(3, 3, 'Bananen', 'Cavendish bananen, 1kg', 1.69, 100, 30),
-(4, 1, 'Kipfilet 500g', 'Verse kipfilet, 500 gram', 6.99, 35, 10),
-(4, 1, 'Rundergehakt 500g', 'Half-om-half gehakt', 5.49, 40, 15),
-(5, NULL, 'Sinaasappelsap 1L', 'Versgeperste sinaasappelsap', 2.49, 50, 15),
-(5, NULL, 'Cola 1.5L', 'Frisdrank, 1.5 liter fles', 1.99, 200, 50),
-(6, 1, 'Diepvries Doperwten 1kg', 'Diepgevroren doperwten', 2.19, 60, 20),
-(6, NULL, 'Vanille Ijs 1L', 'Romig vanille ijs', 3.99, 40, 10),
-(7, NULL, 'Cornflakes 500g', 'Klassieke cornflakes', 3.49, 55, 15),
-(7, 3, 'Hagelslag Puur 250g', 'Pure chocoladehagelslag', 2.29, 70, 20),
-(8, NULL, 'Allesreiniger 750ml', 'All-purpose schoonmaakmiddel', 1.99, 90, 25);
+INSERT INTO products (category_id, supplier_id, name, description, price, stock, min_stock, barcode) VALUES
+(1, 2, 'Volle Melk 1L', 'Verse volle melk, 1 liter', 1.89, 120, 30, '8710400169482'),
+(1, 2, 'Goudse Kaas 48+', 'Gerijpte Goudse kaas, 500g', 4.99, 45, 10, '8718907845069'),
+(1, 2, 'Magere Yoghurt 500g', 'Magere yoghurt, natuur', 1.29, 60, 20, '8718907039529'),
+(2, 1, 'Wit Brood', 'Vers witbrood, heel', 2.49, 30, 10, '8718907601948'),
+(2, 1, 'Volkoren Brood', 'Gezond volkorenbrood', 2.79, 25, 10, '2235797002496'),
+(3, 3, 'Appels Goudreinet', 'Nederlandse goudreinetten, 1kg', 2.99, 80, 20, NULL),
+(3, 3, 'Bananen', 'Cavendish bananen, 1kg', 1.69, 100, 30, NULL),
+(4, 1, 'Kipfilet 500g', 'Verse kipfilet, 500 gram', 6.99, 35, 10, '8719587188989'),
+(4, 1, 'Rundergehakt 500g', 'Half-om-half gehakt', 5.49, 40, 15, '8718452597024'),
+(5, NULL, 'Sinaasappelsap 1L', 'Versgeperste sinaasappelsap', 2.49, 50, 15, '8713300051000'),
+(5, NULL, 'Cola 1.5L', 'Frisdrank, 1.5 liter fles', 1.99, 200, 50, '5449000000484'),
+(6, 1, 'Diepvries Doperwten 1kg', 'Diepgevroren doperwten', 2.19, 60, 20, '8718906355781'),
+(6, NULL, 'Vanille Ijs 1L', 'Romig vanille ijs', 3.99, 40, 10, NULL),
+(7, NULL, 'Cornflakes 500g', 'Klassieke cornflakes', 3.49, 55, 15, '5059319033501'),
+(7, 3, 'Hagelslag Puur 250g', 'Pure chocoladehagelslag', 2.29, 70, 20, '8710496979125'),
+(8, NULL, 'Allesreiniger 750ml', 'All-purpose schoonmaakmiddel', 1.99, 90, 25, NULL);
 
 INSERT INTO orders (supplier_id, order_date, status, notes) VALUES
 (1, '2026-01-10', 'delivered', 'Weekelijkse bevoorrading verswaren'),
