@@ -13,6 +13,7 @@ CRUD-applicatie voor het beheren van een supermarkt, gebouwd in PHP 8 met OOP, e
 - **API Zoeken** — Zoek via Open Food Facts (v1 API, Nederlandse locale) en importeer producten
 - **JSON API** — Prijsvergelijkingdata op te vragen als JSON (`/api/prices.php`)
 - **Authenticatie** — Inloggen met sessies (demo: `admin` / `password`)
+- **Registratie** - Account registreren en bestaande data gebruiken om in te loggen
 
 ## Tech Stack
 
