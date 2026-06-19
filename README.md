@@ -14,6 +14,8 @@ CRUD-applicatie voor het beheren van een supermarkt, gebouwd in PHP 8 met OOP, e
 - **JSON API** — Prijsvergelijkingdata op te vragen als JSON (`/api/prices.php`)
 - **Authenticatie** — Inloggen met sessies (demo: `admin` / `password`)
 - **Registratie** - Account registreren en bestaande data gebruiken om in te loggen
+- **Personeel** - kijk naar de diensten die je moet doen
+- **Beheer** - Maak Accounts voor medewerkers en geef de medewerkers een dienst
 
 ## Tech Stack
 
