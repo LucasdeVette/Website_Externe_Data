@@ -12,6 +12,8 @@ class ApiService
         'Content-Type: application/json', 'x-client-name: appie-ios',
         'x-client-version: 9.28', 'x-application: AHWEBSHOP', 'Accept: application/json',
     ];
+    private const CACHE_DIR = __DIR__ . '/../../api-cache';
+    private const CACHE_TTL = 3600;
     private ?string $ahToken = null;
     private ?int $ahTokenExpires = 0;
 
@@ -81,6 +83,25 @@ class ApiService
         ];
     }
 
+    private function cacheGet(string $key): mixed
+    {
+        $file = self::CACHE_DIR . '/' . md5($key) . '.cache';
+        if (!is_file($file)) return null;
+        $mtime = filemtime($file);
+        if ($mtime === false || (time() - $mtime) > self::CACHE_TTL) {
+            @unlink($file);
+            return null;
+        }
+        $data = @file_get_contents($file);
+        return $data !== false ? unserialize($data) : null;
+    }
+
+    private function cacheSet(string $key, mixed $value): void
+    {
+        if (!is_dir(self::CACHE_DIR)) @mkdir(self::CACHE_DIR, 0775, true);
+        file_put_contents(self::CACHE_DIR . '/' . md5($key) . '.cache', serialize($value), LOCK_EX);
+    }
+
     private function fetch(string $url): string
     {
         $ch = curl_init();
@@ -98,12 +119,26 @@ class ApiService
     {
         if (empty($barcodes)) return [];
         $prices = [];
-        foreach (array_chunk(array_unique(array_filter($barcodes)), 10) as $chunk) {
+        $uncached = [];
+        foreach (array_unique(array_filter($barcodes)) as $bc) {
+            $cached = $this->cacheGet('off_price_' . $bc);
+            if ($cached !== null) {
+                $prices[$bc] = $cached;
+            } else {
+                $uncached[] = $bc;
+            }
+        }
+        if (empty($uncached)) return $prices;
+        foreach (array_chunk($uncached, 10) as $chunk) {
             $data = json_decode($this->fetch(sprintf('%s?product_code=%s&limit=%d&order_by=date&order_direction=desc', self::PRICES_API, implode(',', array_map('urlencode', $chunk)), 10 * count($chunk))), true);
             foreach ($data['items'] ?? [] as $item) {
                 $bc = $item['product_code'] ?? null;
                 $price = $item['price'] ?? 0;
-                if ($bc && $price > 0) $prices[$bc] = isset($prices[$bc]) ? min($prices[$bc], (float) $price) : (float) $price;
+                if ($bc && $price > 0) {
+                    $fp = (float) $price;
+                    $prices[$bc] = isset($prices[$bc]) ? min($prices[$bc], $fp) : $fp;
+                    $this->cacheSet('off_price_' . $bc, $fp);
+                }
             }
         }
         return $prices;
@@ -142,6 +177,9 @@ class ApiService
 
     public function ahSearchProduct(string $query): ?float
     {
+        $cacheKey = 'ah_price_' . md5($query);
+        $cached = $this->cacheGet($cacheKey);
+        if ($cached !== null) return $cached;
         $token = $this->ahGetToken();
         if (!$token) return null;
         $clean = trim(preg_replace('/\s+[\d.,]+\s*(?:[LXKgl]|ml|kg)\b/i', '', $query));
@@ -149,11 +187,20 @@ class ApiService
         if (empty($data['products'])) return null;
         foreach ($data['products'] as $p) {
             $price = $p['currentPrice'] ?? $p['priceBeforeBonus'] ?? null;
-            if ($price > 0 && !preg_match('/^\d+\s*x\s+/i', $p['salesUnitSize'] ?? '')) return (float) $price;
+            if ($price > 0 && !preg_match('/^\d+\s*x\s+/i', $p['salesUnitSize'] ?? '')) {
+                $result = (float) $price;
+                $this->cacheSet($cacheKey, $result);
+                return $result;
+            }
         }
         $first = $data['products'][0];
         $price = $first['currentPrice'] ?? $first['priceBeforeBonus'] ?? 0;
-        return $price > 0 ? (float) $price : null;
+        if ($price > 0) {
+            $result = (float) $price;
+            $this->cacheSet($cacheKey, $result);
+            return $result;
+        }
+        return null;
     }
 
     public function fetchAhPrices(array $productNames): array
@@ -162,6 +209,11 @@ class ApiService
         $prices = [];
         foreach ($productNames as $key => $name) {
             if (empty($name)) continue;
+            $cached = $this->cacheGet('ah_price_' . md5($name));
+            if ($cached !== null) {
+                $prices[$key] = $cached;
+                continue;
+            }
             $price = $this->ahSearchProduct($name);
             if ($price !== null) $prices[$key] = $price;
             usleep(200000);
